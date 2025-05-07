@@ -11,7 +11,7 @@ function App() {
     width: 300,
     height: 300,
     type: 'svg',
-    data: 'https://example.com',
+    data: 'https://github.com/buggy-bits/qrify',
     image: '',
     margin: 10,
     dotsOptions: {
@@ -105,7 +105,7 @@ function App() {
       <footer className="py-6 px-6 bg-[#ffffff] dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-8">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} QRify - Create Beautiful QR Codes
+            &copy; {new Date().getFullYear()} QRify - Create Free QR Codes
           </p>
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
             Built with React, Tailwind CSS, and qr-code-styling

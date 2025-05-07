@@ -124,19 +124,24 @@ const StyleSettings = ({ options, setOptions }) => {
       {/* Dot Type */}
       <div className="mb-4">
         <label className="label">Dot Style</label>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 gap-2 mt-2">
           {dotTypes.map(type => (
-            <button
-              key={type}
-              className={`text-sm p-2 rounded border ${
-                options.dotsOptions.type === type 
-                  ? 'border-primary-500 bg-primary-50 text-primary-700 dark:bg-primary-900 dark:text-primary-300' 
-                  : 'border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
-              }`}
-              onClick={() => handleDotTypeChange(type)}
-            >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </button>
+            <div key={type} className="flex items-center">
+              <input
+                type="radio"
+                id={`dot-${type}`}
+                name="dotStyle"
+                className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                checked={options.dotsOptions.type === type}
+                onChange={() => handleDotTypeChange(type)}
+              />
+              <label
+                htmlFor={`dot-${type}`}
+                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </label>
+            </div>
           ))}
         </div>
       </div>
@@ -144,19 +149,24 @@ const StyleSettings = ({ options, setOptions }) => {
       {/* Corner Square Type */}
       <div className="mb-4">
         <label className="label">Corner Square Style</label>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 gap-2 mt-2">
           {cornerSquareTypes.map(type => (
-            <button
-              key={type}
-              className={`text-sm p-2 rounded border ${
-                options.cornersSquareOptions?.type === type 
-                  ? 'border-primary-500 bg-primary-50 text-primary-700 dark:bg-primary-900 dark:text-primary-300' 
-                  : 'border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
-              }`}
-              onClick={() => handleCornerSquareTypeChange(type)}
-            >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </button>
+            <div key={type} className="flex items-center">
+              <input
+                type="radio"
+                id={`cornersquare-${type}`}
+                name="cornerSquareStyle"
+                className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                checked={options.cornersSquareOptions?.type === type}
+                onChange={() => handleCornerSquareTypeChange(type)}
+              />
+              <label
+                htmlFor={`cornersquare-${type}`}
+                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </label>
+            </div>
           ))}
         </div>
       </div>
@@ -164,19 +174,24 @@ const StyleSettings = ({ options, setOptions }) => {
       {/* Corner Dot Type */}
       <div className="mb-4">
         <label className="label">Corner Dot Style</label>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 gap-2 mt-2">
           {cornerDotTypes.map(type => (
-            <button
-              key={type}
-              className={`text-sm p-2 rounded border ${
-                options.cornersDotOptions?.type === type 
-                  ? 'border-primary-500 bg-primary-50 text-primary-700 dark:bg-primary-900 dark:text-primary-300' 
-                  : 'border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700'
-              }`}
-              onClick={() => handleCornerDotTypeChange(type)}
-            >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </button>
+            <div key={type} className="flex items-center">
+              <input
+                type="radio"
+                id={`cornerdot-${type}`}
+                name="cornerDotStyle"
+                className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                checked={options.cornersDotOptions?.type === type}
+                onChange={() => handleCornerDotTypeChange(type)}
+              />
+              <label
+                htmlFor={`cornerdot-${type}`}
+                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </label>
+            </div>
           ))}
         </div>
       </div>

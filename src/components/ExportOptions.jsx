@@ -3,6 +3,7 @@ import { useState } from 'react';
 const ExportOptions = ({ handleDownload }) => {
   const [fileType, setFileType] = useState('png');
   const [customSize, setCustomSize] = useState(1000);
+  const [selectedSize, setSelectedSize] = useState('medium');
   const [isCustomSize, setIsCustomSize] = useState(false);
   
   // File type options
@@ -28,9 +29,17 @@ const ExportOptions = ({ handleDownload }) => {
     }
   };
   
+  // Handle size selection change
+  const handleSizeChange = (sizeId) => {
+    setSelectedSize(sizeId);
+    setIsCustomSize(sizeId === 'custom');
+  };
+  
   // Handle download button click
   const handleDownloadClick = () => {
-    const size = isCustomSize ? customSize : sizePresets.find(preset => preset.id === 'medium')?.size;
+    const size = isCustomSize 
+      ? customSize 
+      : sizePresets.find(preset => preset.id === selectedSize)?.size;
     handleDownload(fileType.toUpperCase(), size);
   };
   
@@ -41,19 +50,24 @@ const ExportOptions = ({ handleDownload }) => {
       {/* File Type Selection */}
       <div className="mb-4">
         <label className="label">File Format</label>
-        <div className="flex gap-2">
+        <div className="flex gap-4 mt-2">
           {fileTypes.map(type => (
-            <button
-              key={type.id}
-              className={`px-3 py-1 rounded-md ${
-                fileType === type.id
-                  ? 'bg-primary-500 text-white dark:bg-primary-600'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
-              }`}
-              onClick={() => setFileType(type.id)}
-            >
-              {type.label}
-            </button>
+            <div key={type.id} className="flex items-center">
+              <input
+                type="radio"
+                id={`filetype-${type.id}`}
+                name="fileType"
+                className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                checked={fileType === type.id}
+                onChange={() => setFileType(type.id)}
+              />
+              <label
+                htmlFor={`filetype-${type.id}`}
+                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                {type.label}
+              </label>
+            </div>
           ))}
         </div>
       </div>
@@ -62,38 +76,46 @@ const ExportOptions = ({ handleDownload }) => {
       <div className="mb-6">
         <label className="label mb-2">QR Code Size</label>
         
-        <div className="flex flex-wrap gap-2 mb-3">
+        <div className="grid grid-cols-2 gap-2 mb-3">
           {sizePresets.map(preset => (
-            <button
-              key={preset.id}
-              className={`px-3 py-1 rounded-md ${
-                !isCustomSize && preset.id === 'medium'
-                  ? 'bg-primary-500 text-white dark:bg-primary-600'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
-              }`}
-              onClick={() => {
-                setIsCustomSize(false);
-                // The actual size is passed directly during download
-              }}
-            >
-              {preset.label} ({preset.size}px)
-            </button>
+            <div key={preset.id} className="flex items-center">
+              <input
+                type="radio"
+                id={`size-${preset.id}`}
+                name="qrSize"
+                className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                checked={!isCustomSize && selectedSize === preset.id}
+                onChange={() => handleSizeChange(preset.id)}
+              />
+              <label
+                htmlFor={`size-${preset.id}`}
+                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                {preset.label} ({preset.size}px)
+              </label>
+            </div>
           ))}
           
-          <button
-            className={`px-3 py-1 rounded-md ${
-              isCustomSize
-                ? 'bg-primary-500 text-white dark:bg-primary-600'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
-            }`}
-            onClick={() => setIsCustomSize(true)}
-          >
-            Custom
-          </button>
+          <div className="flex items-center">
+            <input
+              type="radio"
+              id="size-custom"
+              name="qrSize"
+              className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+              checked={isCustomSize}
+              onChange={() => handleSizeChange('custom')}
+            />
+            <label
+              htmlFor="size-custom"
+              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Custom
+            </label>
+          </div>
         </div>
         
         {isCustomSize && (
-          <div className="mb-4">
+          <div className="mb-4 ml-6">
             <div className="flex gap-2 items-center">
               <input
                 type="number"
