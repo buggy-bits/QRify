@@ -5,7 +5,7 @@ import StyleSettings from './StyleSettings';
 import LogoOptions from './LogoOptions';
 import ExportOptions from './ExportOptions';
 
-const ControlPanel = ({ qrOptions, setQrOptions, handleDownload }) => {
+const ControlPanel = ({ qrOptions, setQrOptions, handleDownload, darkMode }) => {
   const [activeTab, setActiveTab] = useState('content');
   
   const tabs = [
@@ -16,15 +16,16 @@ const ControlPanel = ({ qrOptions, setQrOptions, handleDownload }) => {
   ];
 
   return (
-    <div className="card">
-      <div className="flex border-b border-gray-200 dark:border-gray-700">
+    <div className="card overflow-hidden">
+      {/* Tab navigation */}
+      <div className="flex border-b border-gray-200 dark:border-gray-700 mb-4">
         {tabs.map(tab => (
           <button
             key={tab.id}
-            className={`px-4 py-2 font-medium text-sm ${
+            className={`tab ${
               activeTab === tab.id 
-                ? 'border-b-2 border-primary-500 text-primary-600 dark:text-primary-400' 
-                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+                ? 'tab-active' 
+                : 'tab-inactive'
             }`}
             onClick={() => setActiveTab(tab.id)}
           >
@@ -33,36 +34,45 @@ const ControlPanel = ({ qrOptions, setQrOptions, handleDownload }) => {
         ))}
       </div>
       
-      <div className="p-4">
+      {/* Tab content */}
+      <div className="p-1">
         {activeTab === 'content' && (
-          <InputSelector 
-            value={qrOptions.data} 
-            onChange={value => setQrOptions({...qrOptions, data: value})} 
-          />
+          <div className="animate-fadeIn">
+            <InputSelector 
+              value={qrOptions.data} 
+              onChange={value => setQrOptions({...qrOptions, data: value})} 
+            />
+          </div>
         )}
         
         {activeTab === 'style' && (
-          <StyleSettings 
-            options={qrOptions} 
-            setOptions={setQrOptions} 
-          />
+          <div className="animate-fadeIn">
+            <StyleSettings 
+              options={qrOptions} 
+              setOptions={setQrOptions} 
+            />
+          </div>
         )}
         
         {activeTab === 'logo' && (
-          <>
+          <div className="animate-fadeIn">
             <LogoUploader 
               currentLogo={qrOptions.image}
               onLogoChange={image => setQrOptions({...qrOptions, image})}
             />
-            <LogoOptions 
-              options={qrOptions} 
-              setOptions={setQrOptions} 
-            />
-          </>
+            <div className="mt-6">
+              <LogoOptions 
+                options={qrOptions} 
+                setOptions={setQrOptions} 
+              />
+            </div>
+          </div>
         )}
         
         {activeTab === 'export' && (
-          <ExportOptions handleDownload={handleDownload} />
+          <div className="animate-fadeIn">
+            <ExportOptions handleDownload={handleDownload} />
+          </div>
         )}
       </div>
     </div>

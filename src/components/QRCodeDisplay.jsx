@@ -43,22 +43,30 @@ const QRCodeDisplay = forwardRef(({ options }, ref) => {
   }, [qrCode, options]);
 
   return (
-    <div className="card flex flex-col items-center p-8 w-full max-w-md mx-auto">
-      <h2 className="text-xl font-semibold mb-6">QR Code Preview</h2>
+    <div className="card flex flex-col items-center p-6 w-full max-w-md mx-auto h-fit">
+      <h2 className="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-200">QR Code Preview</h2>
       <div 
-        className="shadow-lg rounded-lg overflow-hidden dark:bg-gray-800"
+        className="p-4 rounded-lg overflow-hidden transition-shadow hover:shadow-lg"
         style={{ 
           padding: `${margin}px`,
-          backgroundColor: bgColor
+          backgroundColor: bgColor,
+          boxShadow: '0 4px 14px 0 rgba(0, 0, 0, 0.1)'
         }}
       >
-        <div ref={qrContainerRef} className="shadow-sm"></div>
+        <div ref={qrContainerRef}></div>
       </div>
-      <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-        Scan to test
-      </p>
+      <div className="mt-6 text-center">
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+          Scan to test your QR code
+        </p>
+        <p className="text-xs text-gray-500 dark:text-gray-500">
+          Live preview updates as you make changes
+        </p>
+      </div>
     </div>
   );
 });
+
+QRCodeDisplay.displayName = 'QRCodeDisplay';
 
 export default QRCodeDisplay; 
