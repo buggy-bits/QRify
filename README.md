@@ -3,9 +3,8 @@
 QRify is a modern, customizable QR code generator built with React and TailwindCSS. It allows you to create beautiful QR codes with custom styling, embedded logos, and various export options.
 
 
-[![Vercel](https://img.shields.io/badge/Live-Demo-blue?logo=vercel)](https://your-app.vercel.app)  
+[![Github Pages](https://img.shields.io/badge/Live-Demo-blue?logo=github)](https://buggy-bits.github.io/QRify/)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)  
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/vibecode-qr?style=social)](https://github.com/yourusername/vibecode-qr)
 
 
 ## ✨ Key Features
