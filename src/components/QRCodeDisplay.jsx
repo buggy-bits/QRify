@@ -44,7 +44,7 @@ const QRCodeDisplay = forwardRef(({ options }, ref) => {
 
   return (
     <div className="card flex flex-col items-center p-6 w-full max-w-md mx-auto h-fit">
-      <h2 className="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-200">QR Code Preview</h2>
+      <h2 className="text-xl font-semibold mb-6 text-gray-800">QR Code Preview</h2>
       <div 
         className="p-4 rounded-lg overflow-hidden transition-shadow hover:shadow-lg"
         style={{ 
@@ -56,10 +56,10 @@ const QRCodeDisplay = forwardRef(({ options }, ref) => {
         <div ref={qrContainerRef}></div>
       </div>
       <div className="mt-6 text-center">
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+        <p className="text-sm text-gray-600 mb-2">
           Scan to test your QR code
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-500">
+        <p className="text-xs text-gray-500">
           Live preview updates as you make changes
         </p>
       </div>

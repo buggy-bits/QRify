@@ -5,7 +5,7 @@ import StyleSettings from './StyleSettings';
 import LogoOptions from './LogoOptions';
 import ExportOptions from './ExportOptions';
 
-const ControlPanel = ({ qrOptions, setQrOptions, handleDownload, darkMode }) => {
+const ControlPanel = ({ qrOptions, setQrOptions, handleDownload }) => {
   const [activeTab, setActiveTab] = useState('content');
   
   const tabs = [
@@ -18,7 +18,7 @@ const ControlPanel = ({ qrOptions, setQrOptions, handleDownload, darkMode }) => 
   return (
     <div className="card overflow-hidden">
       {/* Tab navigation */}
-      <div className="flex border-b border-gray-200 dark:border-gray-700 mb-4">
+      <div className="flex border-b border-gray-200 mb-4">
         {tabs.map(tab => (
           <button
             key={tab.id}
