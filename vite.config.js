@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/QRify/', // This makes all asset URLs relative to the current directory
+
+  base: '/qrify/', // GitHub repository name
   build: {
     rollupOptions: {
       output: {
