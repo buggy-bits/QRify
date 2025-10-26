@@ -1,10 +1,11 @@
 # QRify
 
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/) 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 QRify is a modern, customizable QR code generator built with React and TailwindCSS. It allows you to create beautiful QR codes with custom styling, embedded logos, and various export options.
-
-
-[![Github Pages](https://img.shields.io/badge/Live-Demo-blue?logo=github)](https://buggy-bits.github.io/QRify/)  
-[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)  
 
 
 ## ✨ Key Features
@@ -32,7 +33,9 @@ QRify is a modern, customizable QR code generator built with React and TailwindC
 - **Styling**: Tailwind CSS  
 - **File Download**: [file-saver](https://github.com/eligrey/FileSaver.js/)  
 
+## Screenshots
 
+![Screenshots](assets/screenshots/1.png)
 ---
 ## 🤝 Contributing
 1. Fork this repo 
@@ -102,3 +105,5 @@ QRify is a modern, customizable QR code generator built with React and TailwindC
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+Built with ❤️
